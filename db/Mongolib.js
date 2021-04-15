@@ -2,7 +2,6 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 const url = process.env.mongourl;
-//console.log(url);
 
 const dbName = 'job';
 
@@ -27,9 +26,11 @@ const findDocuments = function (db, callback) {
     });
 }
 
-const postDocument = function (db, callback) {
+const postDocument = function (db, document) {
     const collection = db.collection('offers');
-    collection.postDocument(db, callback);
+    collection.insertOne(document, function(err, records){
+        console.log("Job offer added successfully!");
+    });
 }
 
 exports.getDatabase = getDatabase;

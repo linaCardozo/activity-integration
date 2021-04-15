@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Job = (props) => {
-const [offer] = useState({
+  const [offer] = useState({
     name: props.offer.name,
     company: props.offer.company,
     salary: props.offer.salary,
@@ -21,6 +21,6 @@ const [offer] = useState({
   };
 
   return <div>{renderOffer()}</div>;
-}
+};
 
 export default Job;

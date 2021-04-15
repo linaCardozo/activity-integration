@@ -4,27 +4,42 @@ const useSignUpForm = (schema) => {
   const [inputs, setInputs] = useState({});
   const [errors, setErrors] = useState("");
 
+  const handleChange = (event) => {
+    setInputs({ ...inputs, [event.target.getAttribute('name')]: event.target.value });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { error } = validate();
     if (!error) {
-      console.log("Form submitted");
-      
+      console.log("Form submitted!", inputs);
+      fetch("/offers", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          this.props.action();
+        });
     } else {
-      console.log(error);
+      console.log("Errors", error);
       setErrors(error);
     }
-  };
 
-  const handleInputChange = (event) => {
-    setInputs({ ...inputs, [event.target.name]: event.target.value });
+    event.preventDefault();
   };
 
   const validate = () => {
     return schema.validate(inputs);
   };
 
-  return { handleSubmit, handleInputChange, errors };
+  return { handleSubmit, handleChange, errors };
 };
 
 export default useSignUpForm;

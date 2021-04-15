@@ -1,0 +1,15 @@
+body {
+    padding: 2%;
+}
+
+div {
+    padding-bottom: 1%;
+}
+
+label {
+    padding-right: 1%;
+}
+
+button[type="submit"] {
+    margin-top: 1%;
+}

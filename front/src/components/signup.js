@@ -1,4 +1,5 @@
 import useSignUpForm from "./customHooks";
+import "./style.css"
 import * as Joi from "joi";
 
 const schema = Joi.object({
@@ -9,47 +10,48 @@ const schema = Joi.object({
 });
 
 function Signup() {
-  const { handleSubmit, handleInputChange } = useSignUpForm(schema);
+  const { handleSubmit, handleChange } = useSignUpForm(schema);
   return (
       <div>
+        <h1>Add a new offer</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
               name="name"
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           </div>
   
           <div>
-            <label htmlFor="company">Company</label>
+            <label htmlFor="company">Company:</label>
             <input
               type="text"
               id="company"
               name="company"
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           </div>
   
           <div>
-            <label htmlFor="salary">Salary</label>
+            <label htmlFor="salary">Salary:</label>
             <input
               type="text"
               id="salary"
               name="salary"
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           </div>
 
           <div>
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">City:</label>
             <input
               type="text"
               id="city"
               name="city"
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           </div>
           <button type="submit">Register</button>

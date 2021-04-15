@@ -12,12 +12,12 @@ router.get('/', function (req, res, next) {
     })
 });
 
-/*
+/* POST a job offer */
 router.post('/', function (req, res) {
     Mongolib.getDatabase(db => {
-        Mongolib.postDocument(db, )
+        Mongolib.postDocument(db, req.body);
     })
 })
-*/
+
 
 module.exports = router;
